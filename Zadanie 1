@@ -1,0 +1,45 @@
+#include "myclass.h"
+using namespace std;
+
+int main()
+{
+my::Box box01(3, 12, 9), *p;
+p=&box01;
+my::Box box02(12, 1, 5);
+my::Box box03(7, 6, 5);
+
+p->report();
+box02.report();
+box03.report();
+
+return 0;
+}
+
+#include <iostream>
+
+namespace my{
+class Box{
+public:
+int length;
+int width;
+int heigth;
+
+int volume(){return length*width*heigth;};
+int surface(){return length*width;};
+int SumVS(){return volume()+surface();};
+
+void report(){
+using namespace std;
+cout « " Volume: " « volume() «"\n";
+cout « " surface: " « surface() «"\n";
+cout « " SumVS: " « SumVS() «"\n";
+}
+Box(int l=1, int w=1, int h=1){
+std::cout « " — B — \n";
+length=l;
+width=w;
+heigth=h;
+}
+~Box(){std::cout «" Box DELETE \n";};
+};
+};
